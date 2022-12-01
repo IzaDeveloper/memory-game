@@ -1,5 +1,8 @@
-import card_1 from '../images/card_1.png'
-export const card1 = card_1
+import card0 from '../images/card.png'
+export const card_0 = card0
+
+import card1 from '../images/card_1.png'
+export const card_1 = card1
 
 import card_2 from '../images/card_2.png'
 export const card2 = card_2

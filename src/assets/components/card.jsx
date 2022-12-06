@@ -1,27 +1,35 @@
 import React, { useEffect, useState } from "react";
 import classNames from "classnames";
 
-export default function (props) {
-    const [backCard, setBackCard] = useState("back-card");
-    const [frontCard, setFrontCard] = useState("front-card");
+export default function (props, row, index, isInactive, isFlipped, isDisabled) {
+    const [clicked, setClicked] = useState(false)
 
-    const flipped = () => {
-        setBackCard("back-card-flip");
-        setFrontCard("front-card-flip");
-    };
+    const handleClick = () => {
+        // setClicked(!clicked)
+        
+        // clicked && !isDisabled && onClick(index)
+
+        !isFlipped && !isDisabled && onClick(index);
+    }
 
     return (
         <>
             <div
-                onClick={() => props.setMove()}
-                className="border border-gray-200 rounded-lg shadow-md m-4"
+                // className={classNames("card", {
+                //     "is-flipped": isFlipped,
+                //     "is-inactive": isInactive
+                // })}
+                onClick={() => handleClick()}
+                className={`border border-gray-200 rounded-lg shadow-md m-4 h-20 relative overflow-hidden`}
             >
-                <div className={backCard}>
-                    <img src={props.row.back} alt="" className="rounded-lg"/>
+                <div className={`absolute w-full h-full flex items-center justify-center ${clicked ? 'invisible' : 'visible'}`}>
+                    {/* <img src={props.row.back} alt="" className="rounded-lg"/> */}
+                    {props.row.number}
                 </div>
 
-                <div className={frontCard}>
-                    <img src={props.row.front} alt="" className="rounded-lg"/>
+                <div className={`absolute w-full h-full flex items-center justify-center ${clicked ? 'visible' : 'invisible'}`}>
+                    {/* <img src={props.row.front} alt="" className="rounded-lg"/> */}
+                    {props.row.name}
                 </div>
             </div>
         </>

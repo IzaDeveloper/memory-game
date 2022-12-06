@@ -2,20 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.front-card {
-  display: none;
-  transform: rotateY(0deg);
+.is-flipped {
+  transform: rotateY(180deg);
 }
 
-.front-card-flip {
-  display: block;
-}
-
-.back-card {
-  display: block;
-  transform: rotateY(0deg);
-}
-
-.back-card-flip {
-  display: none;
+.is-inactive {
+  opacity: 0.5;
 }

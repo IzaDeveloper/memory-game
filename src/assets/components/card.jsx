@@ -1,37 +1,31 @@
-import React, { useEffect, useState } from "react";
-import classNames from "classnames";
+import React, { useState } from "react";
+import 'animate.css';
 
-export default function (props, row, index, isInactive, isFlipped, isDisabled) {
+export default function (props) {
     const [clicked, setClicked] = useState(false)
+    const [animate, setAnimate] = useState(false)
 
     const handleClick = () => {
-        // setClicked(!clicked)
-        
-        // clicked && !isDisabled && onClick(index)
+        setClicked(!clicked)
+        setAnimate(true)
 
-        !isFlipped && !isDisabled && onClick(index);
+        setTimeout(() => {
+            setAnimate(false)
+        }, [1005])
     }
 
     return (
-        <>
-            <div
-                // className={classNames("card", {
-                //     "is-flipped": isFlipped,
-                //     "is-inactive": isInactive
-                // })}
-                onClick={() => handleClick()}
-                className={`border border-gray-200 rounded-lg shadow-md m-4 h-20 relative overflow-hidden`}
-            >
-                <div className={`absolute w-full h-full flex items-center justify-center ${clicked ? 'invisible' : 'visible'}`}>
-                    {/* <img src={props.row.back} alt="" className="rounded-lg"/> */}
-                    {props.row.number}
-                </div>
-
-                <div className={`absolute w-full h-full flex items-center justify-center ${clicked ? 'visible' : 'invisible'}`}>
-                    {/* <img src={props.row.front} alt="" className="rounded-lg"/> */}
-                    {props.row.name}
-                </div>
+        <div onClick={() => handleClick()}
+            className={`border bg-gray-200 rounded-lg shadow-md m-4 h-20 relative overflow-hidden animate__animated ${animate ? 'animate__flipInY' : ''}`}>
+            
+            <div className={`absolute w-full h-full flex items-center justify-center ${clicked ? 'invisible' : 'visible'}`}>
+                {props.row.number}
             </div>
-        </>
+
+            <div className={`absolute w-full h-full flex items-center justify-center ${clicked ? 'visible' : 'invisible'}`}>
+                {props.row.name}
+            </div>
+            
+        </div>
     );
 }

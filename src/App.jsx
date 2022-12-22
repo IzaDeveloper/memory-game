@@ -2,15 +2,33 @@ import React, { useEffect, useState, useRef } from "react";
 import Card from "./assets/components/card";
 
 export default function () {
-    const [cardsShuffled, setCardsShuffled] = useState([])
-    const [cards, setCards] = useState([])
+    const CardsArray = [
+        {
+            number: "1",
+            name: 'Card 1'
+        },
+        {
+            number: "2",
+            name: 'Card 2'
+        },
+        {
+            number: "3",
+            name: 'Card 3'
+        },
+        {
+            number: "4",
+            name: 'Card 4'
+        },
+        {
+            number: "5",
+            name: 'Card 5'
+        },
+        {
+            number: "6",
+            name: 'Card 6'
+        }
+    ]
 
-    // Quantidade de cartas que terão par
-    const config = {
-        num_card: 3,
-    };
-
-    // Embaralhar cartas
     function shuffleCards(array) {
         const length = array.length;
 
@@ -21,36 +39,99 @@ export default function () {
             array[currentIndex] = array[randomIndex];
             array[randomIndex] = temp;
         }
-        return array;
+
+        return array
     }
 
-    // Criar pares
-    useEffect(() => {
-        const array_cards = [];
+    const [move, setMove] = useState(0);
+    const [cards, setCards] = useState(() => shuffleCards(CardsArray.concat(CardsArray)))
+    const [openCards, setOpenCards] = useState([]);
+    const [clearedCards, setClearedCards] = useState({});
+    const [shouldDisableAllCards, setShouldDisableAllCards] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const timeout = useRef(null);
 
-        for (let index = 1; index < config.num_card + 1; index++) {
-            var card = {
-                number: index,
-                name: String("Card " + index)
-            };
-            array_cards.push(card);
+    const disable = () => {
+        setShouldDisableAllCards(true);
+    };
+
+    const enable = () => {
+        setShouldDisableAllCards(false);
+    };
+
+    const checkCompletion = () => {
+        if (Object.keys(clearedCards).length === CardsArray.length) {
+            setShowModal(true)
         }
+    };
 
-        setCards(array_cards)
+    const evaluate = () => {
+        const [first, second] = openCards;
+        
+        enable();
 
-        setCardsShuffled(shuffleCards(array_cards.concat(array_cards)));
-    }, []);
+        if (cards[first].number === cards[second].number) {
+            setClearedCards((prev) => ({ ...prev, [cards[first].number]: true }));
+            setOpenCards([]);
+            return;
+        }
+        
+        timeout.current = setTimeout(() => {
+            setOpenCards([]);
+        }, 500);
+    };
+
+    const handleCardClick = (index) => {
+        if (openCards.length === 1) {
+            setOpenCards((prev) => [...prev, index]);
+            setMove((move) => move + 1);
+            disable();
+        } else {
+            clearTimeout(timeout.current);
+            setOpenCards([index]);
+        }
+    };
+
+    useEffect(() => {
+        let timeout = null;
+        if (openCards.length === 2) {
+            setTimeout(() => {
+                evaluate()
+            }, 300)
+        }
+        return () => {
+            clearTimeout(timeout);
+        };
+    }, [openCards]);
+
+    useEffect(() => {
+        checkCompletion();
+    }, [clearedCards]);
+
+    const checkIsFlipped = (index) => {
+        return openCards.includes(index);
+    };
+
+    const checkIsInactive = (row) => {
+        return Boolean(clearedCards[row.number]);
+    };
 
     return (
-        <div className="bg-red-500 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 h-screen">
-            {cardsShuffled.map((row, index) => (
-                <div key={index}>
+        <>
+            {move}
+            <div className="bg-red-500 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 h-screen p-4 gap-4">
+                {cards.map((row, index) => (
                     <Card
+                        key={index}
                         row={row}
                         index={index}
+                        onClick={() => handleCardClick(index)}
+                        isDisabled={shouldDisableAllCards}
+                        isInactive={checkIsInactive(row)}
+                        isFlipped={checkIsFlipped(index)}
                     />
-                </div>
-            ))}
-        </div>
+                ))}
+            </div>
+        </>
     );
 }

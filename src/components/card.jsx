@@ -1,6 +1,6 @@
 import React from "react";
 import 'animate.css';
-import { backCard } from '../assets';
+import { backCard } from "../assets/backCard.png";
 
 export default function (props) {
 

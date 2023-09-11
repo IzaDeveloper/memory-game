@@ -1,2 +1,2 @@
-import backcard from './images/backcard.png'
+import backcard from './images/backCard.png'
 export const backCard = backcard

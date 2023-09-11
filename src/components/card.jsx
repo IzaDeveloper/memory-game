@@ -1,5 +1,6 @@
 import React from "react";
 import 'animate.css';
+import { backCard } from '../assets';
 
 export default function (props) {
 
@@ -13,11 +14,11 @@ export default function (props) {
             className={`card ${props.isFlipped ? 'is-flipped' : 'flipped'} ${props.isInactive && 'is-inactive'}`}>
 
             <div className={`card-face card-front-face`}>
-                {props.row.number}
+                <img src={backCard} alt="" />
             </div>
 
             <div className={`card-face card-back-face`}>
-                {props.row.name}
+                <img src={props.row.image} alt="" />
             </div>
 
         </div>

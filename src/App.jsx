@@ -1,31 +1,37 @@
 import React, { useEffect, useState, useRef } from "react";
-import Card from "./assets/components/card";
+import Card from "./components/card";
 
 export default function () {
     const CardsArray = [
         {
             number: "1",
-            name: 'Card 1'
+            name: 'Card 1',
+            image: 'https://i.imgur.com/zfUMWMj.png'
         },
         {
             number: "2",
-            name: 'Card 2'
+            name: 'Card 2',
+            image: 'https://www.pintarcolorir.com.br/wp-content/uploads/2015/04/Desenhos-para-colorir-Charizard-01.png'
         },
         {
             number: "3",
-            name: 'Card 3'
+            name: 'Card 3',
+            image: 'https://upload.wikimedia.org/wikipedia/sh/thumb/4/43/Bulbasaur.png/1200px-Bulbasaur.png'
         },
         {
             number: "4",
-            name: 'Card 4'
+            name: 'Card 4',
+            image: 'https://assets.stickpng.com/images/580b57fcd9996e24bc43c32a.png'
         },
         {
             number: "5",
-            name: 'Card 5'
+            name: 'Card 5',
+            image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png'
         },
         {
             number: "6",
-            name: 'Card 6'
+            name: 'Card 6',
+            image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png'
         }
     ]
 
@@ -67,7 +73,7 @@ export default function () {
 
     const evaluate = () => {
         const [first, second] = openCards;
-        
+
         enable();
 
         if (cards[first].number === cards[second].number) {
@@ -75,7 +81,7 @@ export default function () {
             setOpenCards([]);
             return;
         }
-        
+
         timeout.current = setTimeout(() => {
             setOpenCards([]);
         }, 500);
@@ -117,9 +123,8 @@ export default function () {
     };
 
     return (
-        <>
-            {move}
-            <div className="bg-red-500 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 h-screen p-4 gap-4">
+        <article>
+            <section className="bg-red-700 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 h-screen p-4 gap-4">
                 {cards.map((row, index) => (
                     <Card
                         key={index}
@@ -131,7 +136,17 @@ export default function () {
                         isFlipped={checkIsFlipped(index)}
                     />
                 ))}
-            </div>
-        </>
+            </section>
+
+            {showModal && (
+                <section className="w-screen h-screen fixed top-0 z-50 bg-neutral-900 bg-opacity-95 flex flex-col justify-center items-center">
+                    <p className="font-bold text-3xl text-white text-center pb-5">
+                        Parabéns!! <br />
+                        Você terminou o jogo com {move} movimentos.
+                    </p>
+                    <button className="bg-red-500 uppercase shadow-md rounded text-white py-5 px-7" onClick={() => window.location.reload()}>Novo Jogo</button>
+                </section>
+            )}
+        </article>
     );
 }

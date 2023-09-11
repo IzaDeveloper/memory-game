@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+    user-select: none;
+    box-sizing: border-box; 
+}
+
 .card {
     transform-style: preserve-3d;
     position: relative;
@@ -22,12 +27,12 @@
 }
 
 .card-front-face {
-    background-color: rgb(112, 124, 235);
+    background-color: #fff;
 }
     
 .card-back-face {
     transform: rotateY(180deg);
-    background-color: rgb(19, 209, 209)
+    background-color: #fff;
 }
 
 .is-flipped {

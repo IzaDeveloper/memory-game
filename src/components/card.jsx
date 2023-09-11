@@ -1,6 +1,5 @@
 import React from "react";
 import 'animate.css';
-import { backCard } from "../assets/backCard.png";
 
 export default function (props) {
 
@@ -14,7 +13,7 @@ export default function (props) {
             className={`card ${props.isFlipped ? 'is-flipped' : 'flipped'} ${props.isInactive && 'is-inactive'}`}>
 
             <div className={`card-face card-front-face`}>
-                <img src={backCard} alt="" />
+                <img src='https://memory-pokemon.vercel.app/assets/backCard.17e33bca.png' alt="" />
             </div>
 
             <div className={`card-face card-back-face`}>

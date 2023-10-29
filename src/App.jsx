@@ -148,11 +148,11 @@ export default function () {
                                 Você terminou o jogo com {move} movimentos.
                             </h3>
 
-                            <button data-modal-hide="popup-modal" type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-800 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" onClick={() => window.location.reload()}>
+                            <button type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-800 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" onClick={() => window.location.reload()}>
                                 Novo Jogo
                             </button> 
 
-                            <button data-modal-hide="popup-modal" type="button" className="text-neutral-800 bg-neutral-300 hover:bg-neutral-200 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-neutral-800 dark:text-gray-300 dark:hover:text-white dark:hover:bg-neutral-900 dark:focus:ring-neutral-900">Fechar</button>
+                            <button type="button" className="text-neutral-800 bg-neutral-300 hover:bg-neutral-200 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-neutral-800 dark:text-gray-300 dark:hover:text-white dark:hover:bg-neutral-900 dark:focus:ring-neutral-900" onClick={() => window.location.reload()}>Fechar</button>
                         </div>
                     </div>
                 </div>

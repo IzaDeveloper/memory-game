@@ -14,7 +14,7 @@
 
 ## 🔗 Live Demo
 
-🌐 Check the live demo at: [https://memory-game-react.vercel.app](https://memory-game-react.vercel.app)
+🌐 Check the live demo at: [https://memory-pokemon.vercel.app](https://memory-pokemon.vercel.app)
 
 ---
 
@@ -38,7 +38,7 @@
 
 ### 🧩 Step 1: Clone the repository
 ```bash
-git clone https://github.com/seu-usuario/memory-game-react.git
+git clone https://github.com/IzaDeveloper/memory-game-react.git
 ```
 
 ### 📁 Step 2: Navigate to the project folder
@@ -72,7 +72,7 @@ Developed by [Izabelle](https://github.com/IzaDeveloper) 💻
 
 ## 🔗 Demo online
 
-🌐 Acesse a demo em: [https://memory-game-react.vercel.app](https://memory-game-react.vercel.app)
+🌐 Acesse a demo em: [https://memory-pokemon.vercel.app](https://memory-pokemon.vercel.app)
 
 ---
 
@@ -96,7 +96,7 @@ Developed by [Izabelle](https://github.com/IzaDeveloper) 💻
 
 ### 🧩 Passo 1: Clonar o repositório
 ```bash
-git clone https://github.com/seu-usuario/memory-game-react.git
+git clone https://github.com/IzaDeveloper/memory-game-react.git
 ```
 
 ### 📁 Passo 2: Acessar o diretório do projeto

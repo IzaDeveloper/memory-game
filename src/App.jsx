@@ -1,37 +1,38 @@
 import React, { useEffect, useState, useRef } from "react";
 import Card from "./components/card";
+import { Modal } from "./components/Modal";
 
 export default function () {
     const CardsArray = [
         {
             number: "1",
             name: 'Card 1',
-            image: 'https://www.dicaspraticas.com.br/wp-content/uploads/2020/04/desenho-de-pokemon-para-colorir-16.jpg'
+            image: 'https://memory-pokemon.vercel.app/Pikachu.jpg'
         },
         {
             number: "2",
             name: 'Card 2',
-            image: 'https://www.pintarcolorir.com.br/wp-content/uploads/2015/04/Desenhos-para-colorir-Charizard-01.png'
+            image: 'https://memory-pokemon.vercel.app/Charizard.png'
         },
         {
             number: "3",
             name: 'Card 3',
-            image: 'https://upload.wikimedia.org/wikipedia/sh/thumb/4/43/Bulbasaur.png/1200px-Bulbasaur.png'
+            image: 'https://memory-pokemon.vercel.app/Bulbasaur.png'
         },
         {
             number: "4",
             name: 'Card 4',
-            image: 'https://assets.stickpng.com/images/580b57fcd9996e24bc43c32a.png'
+            image: 'https://memory-pokemon.vercel.app/Evee.png'
         },
         {
             number: "5",
             name: 'Card 5',
-            image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/133.png'
+            image: 'https://memory-pokemon.vercel.app/Psyduck.png'
         },
         {
             number: "6",
             name: 'Card 6',
-            image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/054.png'
+            image: 'https://memory-pokemon.vercel.app/Squirtle.png'
         }
     ]
 
@@ -124,7 +125,7 @@ export default function () {
 
     return (
         <article>
-            <section className="bg-red-700 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 h-screen p-4 gap-4">
+            <section className="bg-red-700 grid xl:grid-cols-6 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 p-4 gap-4 min-h-screen overflow-y-auto">
                 {cards.map((row, index) => (
                     <Card
                         key={index}
@@ -139,24 +140,11 @@ export default function () {
             </section>
 
             {showModal && (
-            <section className="w-screen h-screen fixed top-0 z-50 bg-neutral-900 bg-opacity-95 flex flex-col justify-center items-center">
-                <div className="relative w-full max-w-md max-h-full">
-                    <div className="relative bg-neutral-100 dark:bg-neutral-700 rounded-lg shadow">
-                        <div className="p-6 text-center">
-                            <h3 className="mb-5 text-lg font-normal text-neutral-900 dark:text-neutral-200">
-                                Parabéns ! <br />
-                                Você terminou o jogo com {move} movimentos.
-                            </h3>
-
-                            <button type="button" className="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-800 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" onClick={() => window.location.reload()}>
-                                Novo Jogo
-                            </button> 
-
-                            <button type="button" className="text-neutral-800 bg-neutral-300 hover:bg-neutral-200 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10 dark:bg-neutral-800 dark:text-gray-300 dark:hover:text-white dark:hover:bg-neutral-900 dark:focus:ring-neutral-900" onClick={() => window.location.reload()}>Fechar</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
+                <Modal 
+                    isOpen={showModal}
+                    moves={move}
+                    onClose={() => setShowModal(false)}
+                />
             )}
         </article>
     );

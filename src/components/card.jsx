@@ -29,7 +29,7 @@ export default function Card(props) {
                 <img 
                     src={props.row.image}
                     alt={props.row.name}
-                    className="w-full h-full object-contain"
+                    className="w-full h-full object-contain p-5"
                 />
             </div>
 

@@ -22,7 +22,7 @@ export default function () {
         {
             number: "4",
             name: 'Card 4',
-            image: 'https://memory-pokemon.vercel.app/Evee.png'
+            image: 'https://memory-pokemon.vercel.app/Eevee.png'
         },
         {
             number: "5",
